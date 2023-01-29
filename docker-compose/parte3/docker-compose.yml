@@ -1,0 +1,24 @@
+version: "3.9"  # optional since v1.27.0
+
+services:
+  web:
+    restart: on-failure:3
+
+    build: ./dockerfiles/web/
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/:/usr/share/nginx/html/
+      - logvolume01:/var/log
+    links:
+      - redis
+    environment:
+      - DEBUG=1
+      - NOMBRE = coazit
+
+  redis:
+    image: redis
+
+volumes:
+  logvolume01: {}
