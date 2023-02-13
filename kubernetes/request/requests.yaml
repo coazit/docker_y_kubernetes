@@ -8,5 +8,5 @@ spec:
     image: nginx
     resources:
       requests:
-        memory: "10G"
-        cpu: "8"
+        memory: "1G"
+        cpu: "1"
